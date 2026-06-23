@@ -12,7 +12,6 @@ jobs:
   run-experiment:
     runs-on: ubuntu-latest
     steps:
-      # fetch-depth: 0 нужен, чтобы DVC мог сравнить текущую ветку с историей main
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -21,6 +20,18 @@ jobs:
         with:
           python-version: '3.13'
           cache: 'pip'
+      - name: Install system dependencies for CML
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            libcairo2-dev \
+            libpango1.0-dev \
+            libjpeg-dev \
+            libgif-dev \
+            librsvg2-dev \
+            libpixman-1-dev \
+            pkg-config
 
       - name: Setup CML
         uses: iterative/setup-cml@v2
