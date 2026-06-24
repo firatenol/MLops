@@ -2,7 +2,7 @@
 FROM python:3.13-slim
 # Указываем рабочую директорию
 WORKDIR /app
-# Копируем все файлы проекта внутрь
+# Копируем все файлы проекта внутрb
 COPY . /app
 # Устанавливаем библиотеки
 RUN pip install --no-cache-dir -r requirements.txt
